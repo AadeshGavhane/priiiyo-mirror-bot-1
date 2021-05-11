@@ -146,17 +146,17 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str, size):
         with download_dict_lock:
-            msg = f'<b>🗂 𝗙𝗶𝗹𝗲𝗡𝗮𝗺𝗲 : </b><code>{download_dict[self.uid].name()}</code>\n<b>📦 𝐓𝐨𝐭𝐚𝐥 𝐒𝐢𝐳𝐞 : </b><code>{size}</code>\n' \
+            msg = f'<b> 𝗙𝗶𝗹𝗲𝗡𝗮𝗺𝗲 : </b><code>{download_dict[self.uid].name()}</code>\n<b> 𝓣𝓸𝓽𝓪𝓵 𝓢𝓲𝔃𝓮 : </b><code>{size}</code>\n' \
                   f' \n' \
-                  f'🎴𝙋𝙧𝙞𝙞𝙞𝙮𝙤 𝙈𝙞𝙧𝙧𝙤𝙧 𝙕𝙤𝙣𝙀\n' \
+                  f'▀▄▀▄▀▄ 𝓂χⓣ 爪𝕀𝕣яỖŕ 𝐙σηｅ ▄▀▄▀▄▀\n' \
                   f' \n' \
-                  f'🎴𝙂𝙧𝙤𝙪𝙥 : @PriiiyoMirror\n'
+                  f'🎴𝙂𝙧𝙤𝙪𝙥 :@Mxtmirrorzone\n'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={link}&format=text').text
-                buttons.buildbutton("🗂 𝐃𝐫𝐢𝐯𝐞 𝐋𝐢𝐧𝐤 🗂", surl)
+                buttons.buildbutton("𝕯𝖗𝖎𝖛𝖊 𝕷𝖎𝖓𝖐", surl)
             else:
-                buttons.buildbutton("🗂 𝐃𝐫𝐢𝐯𝐞 𝐋𝐢𝐧𝐤 🗂", link)
+                buttons.buildbutton("𝕯𝖗𝖎𝖛𝖊 𝕷𝖎𝖓𝖐", link)
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 url_path = requests.utils.quote(f'{download_dict[self.uid].name()}')
@@ -165,9 +165,9 @@ class MirrorListener(listeners.MirrorListeners):
                     share_url += '/'
                 if SHORTENER is not None and SHORTENER_API is not None:
                     siurl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={share_url}&format=text').text
-                    buttons.buildbutton("🚀 𝐈𝐧𝐝𝐞𝐱 𝐋𝐢𝐧𝐤 🚀", siurl)
+                    buttons.buildbutton("𝓲𝓷𝓭𝓮𝔁 𝓵𝓲𝓷𝓴", siurl)
                 else:
-                    buttons.buildbutton("🚀 𝐈𝐧𝐝𝐞𝐱 𝐋𝐢𝐧𝐤 🚀", share_url)
+                    buttons.buildbutton("𝓲𝓷𝓭𝓮𝔁 𝓵𝓲𝓷𝓴", share_url)
             if BUTTON_THREE_NAME is not None and BUTTON_THREE_URL is not None:
                 buttons.buildbutton(f"{BUTTON_THREE_NAME}", f"{BUTTON_THREE_URL}")
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
@@ -179,7 +179,7 @@ class MirrorListener(listeners.MirrorListeners):
             else:
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
-                msg += f'\n\n<b>👤 𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗿 : 👉</b> {uname}\n\n▫️#Uploaded To Team Drive ✓ \n\n🚫 𝘿𝙤 𝙉𝙤𝙩 𝙎𝙝𝙖𝙧𝙚 𝙄𝙣𝙙𝙚𝙭 𝙇𝙞𝙣𝙠 \n\n✅ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 : <b>@PriiiyoBOTs</b>'
+                msg += f'\n\n<b>👤 𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗿 : 👉</b> {uname}\n\n▫️#🆄🅿🅻🅾🅰🅳🅴🅳 🆃🅾 🆃🅴🅰🅼 🅳🆁🅸🆅🅴 \n\n🚫 𝓓𝓸 𝓝𝓸𝓽 𝓢𝓱𝓪𝓻𝓮 𝓽𝓱𝓮 𝓘𝓷𝓭𝓮𝔁 𝓵𝓲𝓷𝓴 \n\n 𝒫𝑜𝓌𝑒𝓇𝑒𝒹 𝒷𝓎 : <b>@𝖟𝖊𝖚𝖙𝖘</b>'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
