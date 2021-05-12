@@ -78,9 +78,9 @@ def update_all_messages():
     used = get_readable_file_size(used)
     free = get_readable_file_size(free)
     msg = get_readable_message()
-    msg += f" <b>🖥️ CPU:</b> {psutil.cpu_percent()}%" \
-           f" <b>🚀 RAM:</b> {psutil.virtual_memory().percent}%" \
-           f"<b>📦 DISK:</b> {psutil.disk_usage('/').percent}%"
+    msg += f" <b> 𝓒𝓟𝓤:</b> {psutil.cpu_percent()}%" \
+           f" <b> 𝓡𝓐𝓜:</b> {psutil.virtual_memory().percent}%" \
+           f" <b> 𝓓𝓘𝓢𝓚:</b> {psutil.disk_usage('/').percent}%"
     with download_dict_lock:
         dlspeed_bytes = 0
         uldl_bytes = 0
@@ -105,8 +105,8 @@ def update_all_messages():
                 if len(msg) == 0:
                     msg = "Starting DL"
                 try:
-                    keyboard = [[InlineKeyboardButton("🔄 REFRESH 🔄", callback_data=str(ONE)),
-                                 InlineKeyboardButton("❌ CLOSE ❌", callback_data=str(TWO)),]]
+                    keyboard = [[InlineKeyboardButton(" 𝓡𝓔𝓕𝓡𝓔𝓢𝓗 ", callback_data=str(ONE)),
+                                 InlineKeyboardButton(" 𝓒𝓛𝓞𝓢𝓔 ", callback_data=str(TWO)),]]
                     editMessage(msg, status_reply_dict[chat_id], reply_markup=InlineKeyboardMarkup(keyboard))
                 except Exception as e:
                     LOGGER.error(str(e))
@@ -134,8 +134,8 @@ def sendStatusMessage(msg, bot):
     free = get_readable_file_size(free)
     progress = get_readable_message()
     progress += f" <b>🖥 CPU:</b> {psutil.cpu_percent()}%\n" \
-           f" <b>🚀 RAM:</b> {psutil.virtual_memory().percent}%\n" \
-           f" <b>📦 DISK:</b> {psutil.disk_usage('/').percent}%\n"
+           f" <b> 𝓡𝓐𝓜:</b> {psutil.virtual_memory().percent}%\n" \
+           f" <b> 𝓓𝓘𝓢𝓚:</b> {psutil.disk_usage('/').percent}%\n"
     with download_dict_lock:
         dlspeed_bytes = 0
         uldl_bytes = 0
